@@ -16,8 +16,8 @@ namespace YoshidayaGadgetsCS
     public partial class formGadgets : Form
     {
 
-        string StartURL = "file://server02/data/%EF%BE%8E%EF%BD%BD%EF%BE%84%EF%BE%83%EF%BE%9E%EF%BD%B0%EF%BE%80/desktop/index.html";
-        //string StartURL = "file:///C:/Users/user/source/repos/YoshidayaGadgetsCS/YoshidayaGadgetsCS/test.html";
+        //string StartURL = "file://server02/data/%EF%BE%8E%EF%BD%BD%EF%BE%84%EF%BE%83%EF%BE%9E%EF%BD%B0%EF%BE%80/desktop/index.html";
+        string StartURL = "file:///C:/Users/user/source/repos/YoshidayaGadgetsCS/YoshidayaGadgetsCS/test.html";
 
         public formGadgets()
         {
@@ -66,5 +66,10 @@ namespace YoshidayaGadgetsCS
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            FormCustom FormCustom = new FormCustom();
+            FormCustom.Show();
+        }
     }
 }

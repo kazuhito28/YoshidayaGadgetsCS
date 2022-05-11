@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formGadgets));
             this.viewGadgets = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.viewGadgets)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // viewGadgets
@@ -40,29 +43,47 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.viewGadgets.CreationProperties = null;
             this.viewGadgets.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.viewGadgets.Location = new System.Drawing.Point(2, 2);
+            this.viewGadgets.Location = new System.Drawing.Point(1, 1);
+            this.viewGadgets.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.viewGadgets.Name = "viewGadgets";
-            this.viewGadgets.Size = new System.Drawing.Size(797, 448);
+            this.viewGadgets.Size = new System.Drawing.Size(598, 359);
             this.viewGadgets.TabIndex = 0;
             this.viewGadgets.ZoomFactor = 1D;
-             // 
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(525, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // formGadgets
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.viewGadgets);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "formGadgets";
             this.Text = "吉田屋事務器";
             this.Load += new System.EventHandler(this.formGadgets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.viewGadgets)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private Microsoft.Web.WebView2.WinForms.WebView2 viewGadgets;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
