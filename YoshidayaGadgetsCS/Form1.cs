@@ -35,6 +35,18 @@ namespace YoshidayaGadgetsCS
 
         private void formGadgets_Load(object sender, EventArgs e)
         {
+
+            // ウィンドウの状態を復元
+            if (Properties.Settings.Default.GadgetSize.Width > 0 && Properties.Settings.Default.GadgetSize.Height > 0)    // サイズが 0 じゃない
+            {
+                if (Properties.Settings.Default.GadgetState != FormWindowState.Minimized)    // 最小化の場合は無視する
+                {
+                    this.WindowState = Properties.Settings.Default.GadgetState;
+                }
+                this.Location = Properties.Settings.Default.GadgetPos;
+                this.Size = Properties.Settings.Default.GadgetSize;
+            }
+
             viewGadgets.NavigationStarting += WebView2_NavigationStarting;
 
             _ = InitializeAsync();
@@ -70,6 +82,26 @@ namespace YoshidayaGadgetsCS
         {
             FormCustom FormCustom = new FormCustom();
             FormCustom.Show();
+        }
+
+        private void formGadgets_Closed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.GadgetState = this.WindowState;
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                // 通常の場合は現在の座標とサイズを記憶する
+                Properties.Settings.Default.GadgetPos = this.Location;
+                Properties.Settings.Default.GadgetSize = this.Size;
+            }
+            else
+            {
+                // そうじゃない場合（最大化もしくは最小化）は元のサイズを記憶する
+                Properties.Settings.Default.GadgetPos = this.RestoreBounds.Location;
+                Properties.Settings.Default.GadgetSize = this.RestoreBounds.Size;
+            }
+
+            // 設定を保存
+            Properties.Settings.Default.Save();
         }
     }
 }
