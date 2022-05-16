@@ -25,6 +25,7 @@ namespace YoshidayaGadgetsCS
 
             //this.viewGadgets.Source = new System.Uri(StartURL, System.UriKind.Absolute);
 
+            MessageBox.Show(Properties.Settings.Default.StartPageUrl.ToString());
 
         }
 
