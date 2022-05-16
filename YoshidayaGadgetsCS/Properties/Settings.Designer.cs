@@ -61,10 +61,10 @@ namespace YoshidayaGadgetsCS.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string StartPageUrl {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://yoshidayanet.com/")]
+        public global::System.Uri StartPageUrl {
             get {
-                return ((string)(this["StartPageUrl"]));
+                return ((global::System.Uri)(this["StartPageUrl"]));
             }
             set {
                 this["StartPageUrl"] = value;

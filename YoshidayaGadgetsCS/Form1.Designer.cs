@@ -42,11 +42,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.viewGadgets.CreationProperties = null;
+            this.viewGadgets.DataBindings.Add(new System.Windows.Forms.Binding("Source", global::YoshidayaGadgetsCS.Properties.Settings.Default, "StartPageUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.viewGadgets.DefaultBackgroundColor = System.Drawing.Color.White;
             this.viewGadgets.Location = new System.Drawing.Point(-1, 1);
             this.viewGadgets.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.viewGadgets.Name = "viewGadgets";
             this.viewGadgets.Size = new System.Drawing.Size(829, 552);
+            this.viewGadgets.Source = global::YoshidayaGadgetsCS.Properties.Settings.Default.StartPageUrl;
             this.viewGadgets.TabIndex = 0;
             this.viewGadgets.ZoomFactor = 1D;
             // 

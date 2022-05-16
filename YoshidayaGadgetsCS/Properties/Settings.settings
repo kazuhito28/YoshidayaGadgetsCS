@@ -11,8 +11,8 @@
     <Setting Name="GadgetSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
-    <Setting Name="StartPageUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="StartPageUrl" Type="System.Uri" Scope="User">
+      <Value Profile="(Default)">http://yoshidayanet.com/</Value>
     </Setting>
   </Settings>
 </SettingsFile>
