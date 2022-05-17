@@ -24,7 +24,7 @@ namespace YoshidayaGadgetsCS
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.StartPageUrl = new System.Uri(this.textBoxStartPageUrl.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace YoshidayaGadgetsCS
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                textBox1.Text = openFileDialog1.FileName;
+                textBoxStartPageUrl.Text = openFileDialog1.FileName;
 
             }
         }
@@ -47,6 +47,11 @@ namespace YoshidayaGadgetsCS
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
             trackBar1.Value = (int)((trackBar1.Value / 10) * 10);
+        }
+
+        private void formCustom_Load(object sender, EventArgs e)
+        {
+            this.textBoxStartPageUrl.Text = Properties.Settings.Default.StartPageUrl.ToString();
         }
     }
 }
