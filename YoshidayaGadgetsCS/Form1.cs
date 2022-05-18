@@ -108,6 +108,6 @@ namespace YoshidayaGadgetsCS
             Properties.Settings.Default.Save();
         }
 
-
+  
     }
 }
