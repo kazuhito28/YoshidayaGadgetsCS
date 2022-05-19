@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Web.WebView2.Core;
 using System.Diagnostics;
+using System.Web;
 
 namespace YoshidayaGadgetsCS
 {
@@ -25,13 +26,14 @@ namespace YoshidayaGadgetsCS
 
             //this.viewGadgets.Source = new System.Uri(StartURL, System.UriKind.Absolute);
 
-            MessageBox.Show(Properties.Settings.Default.StartPageUrl.ToString());
+            //MessageBox.Show(Properties.Settings.Default.StartPageUrl.ToString());
 
         }
 
         private async Task InitializeAsync()
         {
             await viewGadgets.EnsureCoreWebView2Async(null); // CoreWebView2初期化待ち
+
             viewGadgets.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
         }
 
@@ -49,7 +51,7 @@ namespace YoshidayaGadgetsCS
                 this.Size = Properties.Settings.Default.GadgetSize;
             }
 
-            this.viewGadgets.Source = Properties.Settings.Default.StartPageUrl;
+            this.viewGadgets.Source = new System.Uri(Properties.Settings.Default.StartPageUrl.ToString(), System.UriKind.Absolute);
 
             viewGadgets.NavigationStarting += WebView2_NavigationStarting;
 
@@ -59,27 +61,68 @@ namespace YoshidayaGadgetsCS
 
         private void WebView2_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
-
-            if (!e.Uri.Contains(Properties.Settings.Default.StartPageUrl.ToString()))
+            try
+            
             {
-                //MessageBox.Show("NavigationStarting");
-                Process.Start(e.Uri); // デフォルトブラウザで開く
-                e.Cancel = true; // webview2内でのアクセスをキャンセル
+                MessageBox.Show(HttpUtility.UrlEncode("\\server02/data/ﾎｽﾄﾃﾞｰﾀ/desktop/index.html"));
 
-                return;
+                MessageBox.Show("NavigationStarting:\n" + Properties.Settings.Default.StartPageUrl.ToString() + "\n"+ e.Uri.ToString());
+                MessageBox.Show(this.viewGadgets.Source.ToString());
+                        
+
+                if (!e.Uri.Contains( Properties.Settings.Default.StartPageUrl.ToString() + "test" ) )
+                {
+
+                    //e.Cancel = true; // webview2内でのアクセスをキャンセル
+
+                    MessageBox.Show("この次エラー\n" + Properties.Settings.Default.StartPageUrl.ToString());
+                    Process.Start(e.Uri); // デフォルトブラウザで開く
+
+
+
+                    return;
+                }
+                
+
+
+
+            }
+            
+            catch (Exception er)
+            
+            {
+                MessageBox.Show(e.Uri.ToString());
+                MessageBox.Show(er.ToString());
             }
         }
 
         private void CoreWebView2_NewWindowRequested(object sender, CoreWebView2NewWindowRequestedEventArgs e)
         {
-            e.Handled = true; // NewWindowのキャンセル
+            try 
 
-            if (!e.Uri.Contains(Properties.Settings.Default.StartPageUrl.ToString()))
             {
-                //MessageBox.Show("NewWindowRequested");
-                Process.Start(e.Uri);
-                return;
+                //MessageBox.Show("Request:\n" + Properties.Settings.Default.StartPageUrl.ToString() + "\n" + e.Uri);
+
+                e.Handled = true; // NewWindowのキャンセル
+
+                if (!e.Uri.Contains("test" + Properties.Settings.Default.StartPageUrl.ToString()))
+
+                {
+
+                    Process.Start(e.Uri);
+                    return;
+                }
             }
+
+            catch (Exception er)
+            
+            {
+                MessageBox.Show("ErrCode 1234 : " + er.ToString());
+                MessageBox.Show(Properties.Settings.Default.StartPageUrl.ToString());
+
+            }
+
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -17,14 +17,17 @@ namespace YoshidayaGadgetsCS
             InitializeComponent();
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
 
-        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.StartPageUrl = new System.Uri(this.textBoxStartPageUrl.Text);
+
+            Uri contoso = new Uri(this.textBoxStartPageUrl.Text, UriKind.Absolute);
+
+            //MessageBox.Show(contoso.ToString());
+
+            Properties.Settings.Default.StartPageUrl = new System.Uri(contoso.ToString(), System.UriKind.RelativeOrAbsolute);
+            //this.viewGadgets.Source = new System.Uri(StartURL, System.UriKind.Absolute);
         }
 
         private void button1_Click(object sender, EventArgs e)
