@@ -22,12 +22,11 @@ namespace YoshidayaGadgetsCS
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-            Uri contoso = new Uri(this.textBoxStartPageUrl.Text, UriKind.Absolute);
+            //Uri contoso = new Uri(this.textBoxStartPageUrl.Text, UriKind.Absolute);
 
-            //MessageBox.Show(contoso.ToString());
+            //Properties.Settings.Default.StartPageUrl = new System.Uri(contoso.ToString(), System.UriKind.RelativeOrAbsolute);
 
-            Properties.Settings.Default.StartPageUrl = new System.Uri(contoso.ToString(), System.UriKind.RelativeOrAbsolute);
-            //this.viewGadgets.Source = new System.Uri(StartURL, System.UriKind.Absolute);
+            Properties.Settings.Default.StartPageUrl = new Uri(this.textBoxStartPageUrl.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)

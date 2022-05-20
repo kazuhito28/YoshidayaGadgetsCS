@@ -64,21 +64,18 @@ namespace YoshidayaGadgetsCS
             try
             
             {
-                MessageBox.Show(HttpUtility.UrlEncode("\\server02/data/ﾎｽﾄﾃﾞｰﾀ/desktop/index.html"));
 
-                MessageBox.Show("NavigationStarting:\n" + Properties.Settings.Default.StartPageUrl.ToString() + "\n"+ e.Uri.ToString());
-                MessageBox.Show(this.viewGadgets.Source.ToString());
-                        
+                string decstr = HttpUtility.UrlDecode(e.Uri);
 
-                if (!e.Uri.Contains( Properties.Settings.Default.StartPageUrl.ToString() + "test" ) )
+                //MessageBox.Show("start\n"+decstr);
+
+                if (!decstr.Contains(Properties.Settings.Default.StartPageUrl.ToString()))
+
                 {
 
-                    //e.Cancel = true; // webview2内でのアクセスをキャンセル
+                    e.Cancel = true; // webview2内でのアクセスをキャンセル
 
-                    MessageBox.Show("この次エラー\n" + Properties.Settings.Default.StartPageUrl.ToString());
                     Process.Start(e.Uri); // デフォルトブラウザで開く
-
-
 
                     return;
                 }
@@ -101,11 +98,12 @@ namespace YoshidayaGadgetsCS
             try 
 
             {
-                //MessageBox.Show("Request:\n" + Properties.Settings.Default.StartPageUrl.ToString() + "\n" + e.Uri);
+                string decstr = HttpUtility.UrlDecode(e.Uri);
+                MessageBox.Show("Request\n"+decstr);
 
                 e.Handled = true; // NewWindowのキャンセル
 
-                if (!e.Uri.Contains("test" + Properties.Settings.Default.StartPageUrl.ToString()))
+                if (!decstr.Contains( Properties.Settings.Default.StartPageUrl.ToString()))
 
                 {
 
