@@ -2,17 +2,23 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="YoshidayaGadgetsCS.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="GadgetState" Type="System.Windows.Forms.FormWindowState" Scope="User">
+    <Setting Name="GadgetsState" Type="System.Windows.Forms.FormWindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
     </Setting>
-    <Setting Name="GadgetPos" Type="System.Drawing.Point" Scope="User">
+    <Setting Name="GadgetsPos" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
-    <Setting Name="GadgetSize" Type="System.Drawing.Size" Scope="User">
+    <Setting Name="GadgetsSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
-    <Setting Name="StartPageUrl" Type="System.Uri" Scope="User">
+    <Setting Name="GadgetsStartPageUrl" Type="System.Uri" Scope="User">
       <Value Profile="(Default)">https://www.yoshidayanet.com/</Value>
+    </Setting>
+    <Setting Name="GadgetsOpacity" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
+    </Setting>
+    <Setting Name="GadgetsTitleName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">吉田屋事務器</Value>
     </Setting>
   </Settings>
 </SettingsFile>

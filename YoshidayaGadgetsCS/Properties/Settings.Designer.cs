@@ -26,48 +26,72 @@ namespace YoshidayaGadgetsCS.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
-        public global::System.Windows.Forms.FormWindowState GadgetState {
+        public global::System.Windows.Forms.FormWindowState GadgetsState {
             get {
-                return ((global::System.Windows.Forms.FormWindowState)(this["GadgetState"]));
+                return ((global::System.Windows.Forms.FormWindowState)(this["GadgetsState"]));
             }
             set {
-                this["GadgetState"] = value;
+                this["GadgetsState"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Point GadgetPos {
+        public global::System.Drawing.Point GadgetsPos {
             get {
-                return ((global::System.Drawing.Point)(this["GadgetPos"]));
+                return ((global::System.Drawing.Point)(this["GadgetsPos"]));
             }
             set {
-                this["GadgetPos"] = value;
+                this["GadgetsPos"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
-        public global::System.Drawing.Size GadgetSize {
+        public global::System.Drawing.Size GadgetsSize {
             get {
-                return ((global::System.Drawing.Size)(this["GadgetSize"]));
+                return ((global::System.Drawing.Size)(this["GadgetsSize"]));
             }
             set {
-                this["GadgetSize"] = value;
+                this["GadgetsSize"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://www.yoshidayanet.com/")]
-        public global::System.Uri StartPageUrl {
+        public global::System.Uri GadgetsStartPageUrl {
             get {
-                return ((global::System.Uri)(this["StartPageUrl"]));
+                return ((global::System.Uri)(this["GadgetsStartPageUrl"]));
             }
             set {
-                this["StartPageUrl"] = value;
+                this["GadgetsStartPageUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public double GadgetsOpacity {
+            get {
+                return ((double)(this["GadgetsOpacity"]));
+            }
+            set {
+                this["GadgetsOpacity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("吉田屋事務器")]
+        public string GadgetsTitleName {
+            get {
+                return ((string)(this["GadgetsTitleName"]));
+            }
+            set {
+                this["GadgetsTitleName"] = value;
             }
         }
     }

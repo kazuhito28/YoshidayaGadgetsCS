@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Microsoft.Web.WebView2.Core;
 using System.Diagnostics;
 using System.Web;
+using System.Runtime.InteropServices; //ウィンドウを最背面に配置するため
 
 namespace YoshidayaGadgetsCS
 {
@@ -17,16 +18,9 @@ namespace YoshidayaGadgetsCS
     public partial class formGadgets : Form
     {
 
-        //string StartURL = "file://server02/data/%EF%BE%8E%EF%BD%BD%EF%BE%84%EF%BE%83%EF%BE%9E%EF%BD%B0%EF%BE%80/desktop/index.html";
-        //string StartURL = "file:///C:/Users/user/source/repos/YoshidayaGadgetsCS/YoshidayaGadgetsCS/test.html";
-
         public formGadgets()
         {
             InitializeComponent();
-
-            //this.viewGadgets.Source = new System.Uri(StartURL, System.UriKind.Absolute);
-
-            //MessageBox.Show(Properties.Settings.Default.StartPageUrl.ToString());
 
         }
 
@@ -40,18 +34,22 @@ namespace YoshidayaGadgetsCS
         private void formGadgets_Load(object sender, EventArgs e)
         {
 
+
             // ウィンドウの状態を復元
-            if (Properties.Settings.Default.GadgetSize.Width > 0 && Properties.Settings.Default.GadgetSize.Height > 0)    // サイズが 0 じゃない
+            if (Properties.Settings.Default.GadgetsSize.Width > 0 && Properties.Settings.Default.GadgetsSize.Height > 0)    // サイズが 0 じゃない
             {
-                if (Properties.Settings.Default.GadgetState != FormWindowState.Minimized)    // 最小化の場合は無視する
+                if (Properties.Settings.Default.GadgetsState != FormWindowState.Minimized)    // 最小化の場合は無視する
                 {
-                    this.WindowState = Properties.Settings.Default.GadgetState;
+                    this.WindowState = Properties.Settings.Default.GadgetsState;
                 }
-                this.Location = Properties.Settings.Default.GadgetPos;
-                this.Size = Properties.Settings.Default.GadgetSize;
+                this.Location = Properties.Settings.Default.GadgetsPos;
+                this.Size = Properties.Settings.Default.GadgetsSize;
             }
 
-            this.viewGadgets.Source = new System.Uri(Properties.Settings.Default.StartPageUrl.ToString(), System.UriKind.Absolute);
+            this.Opacity = Properties.Settings.Default.GadgetsOpacity; // 透明度
+            this.Text = Properties.Settings.Default.GadgetsTitleName; // タイトルネーム
+
+            this.viewGadgets.Source = new System.Uri(Properties.Settings.Default.GadgetsStartPageUrl.ToString(), System.UriKind.Absolute);
 
             viewGadgets.NavigationStarting += WebView2_NavigationStarting;
 
@@ -69,7 +67,7 @@ namespace YoshidayaGadgetsCS
 
                 //MessageBox.Show("start\n"+decstr);
 
-                if (!decstr.Contains(Properties.Settings.Default.StartPageUrl.ToString()))
+                if (!decstr.Contains(Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
 
                 {
 
@@ -103,7 +101,7 @@ namespace YoshidayaGadgetsCS
 
                 e.Handled = true; // NewWindowのキャンセル
 
-                if (!decstr.Contains( Properties.Settings.Default.StartPageUrl.ToString()))
+                if (!decstr.Contains( Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
 
                 {
 
@@ -116,7 +114,7 @@ namespace YoshidayaGadgetsCS
             
             {
                 MessageBox.Show("ErrCode 1234 : " + er.ToString());
-                MessageBox.Show(Properties.Settings.Default.StartPageUrl.ToString());
+                MessageBox.Show(Properties.Settings.Default.GadgetsStartPageUrl.ToString());
 
             }
 
@@ -131,18 +129,18 @@ namespace YoshidayaGadgetsCS
 
         private void formGadgets_Closed(object sender, FormClosedEventArgs e)
         {
-            Properties.Settings.Default.GadgetState = this.WindowState;
+            Properties.Settings.Default.GadgetsState = this.WindowState;
             if (this.WindowState == FormWindowState.Normal)
             {
                 // 通常の場合は現在の座標とサイズを記憶する
-                Properties.Settings.Default.GadgetPos = this.Location;
-                Properties.Settings.Default.GadgetSize = this.Size;
+                Properties.Settings.Default.GadgetsPos = this.Location;
+                Properties.Settings.Default.GadgetsSize = this.Size;
             }
             else
             {
                 // そうじゃない場合（最大化もしくは最小化）は元のサイズを記憶する
-                Properties.Settings.Default.GadgetPos = this.RestoreBounds.Location;
-                Properties.Settings.Default.GadgetSize = this.RestoreBounds.Size;
+                Properties.Settings.Default.GadgetsPos = this.RestoreBounds.Location;
+                Properties.Settings.Default.GadgetsSize = this.RestoreBounds.Size;
             }
 
             // 設定を保存
@@ -151,4 +149,31 @@ namespace YoshidayaGadgetsCS
 
   
     }
+
+    //最背面に配置するため
+    public class WindowBack
+    {
+        [DllImport("USER32.DLL", CharSet = CharSet.Auto)]
+        private static extern System.IntPtr FindWindow(
+            string lpClassName,
+            string lpWindowName
+        );
+
+        [DllImport("USER32.DLL", CharSet = CharSet.Auto)]
+        private static extern System.IntPtr SetParent(
+            System.IntPtr hWndChild,
+            System.IntPtr hWndNewParent
+        );
+
+
+        public void goWindowBack(IntPtr Handle)
+        {
+            System.IntPtr hProgramManagerHandle = FindWindow(null, "Program Manager");
+
+            if (!hProgramManagerHandle.Equals(System.IntPtr.Zero))
+                SetParent(Handle, hProgramManagerHandle);
+        }
+
+    }
+
 }

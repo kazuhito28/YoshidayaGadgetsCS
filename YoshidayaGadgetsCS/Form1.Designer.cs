@@ -29,28 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formGadgets));
-            this.viewGadgets = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.viewGadgets)).BeginInit();
+            this.viewGadgets = new Microsoft.Web.WebView2.WinForms.WebView2();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewGadgets)).BeginInit();
             this.SuspendLayout();
-            // 
-            // viewGadgets
-            // 
-            this.viewGadgets.AllowExternalDrop = true;
-            this.viewGadgets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.viewGadgets.CreationProperties = null;
-            this.viewGadgets.DataBindings.Add(new System.Windows.Forms.Binding("Source", global::YoshidayaGadgetsCS.Properties.Settings.Default, "StartPageUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.viewGadgets.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.viewGadgets.Location = new System.Drawing.Point(-1, 1);
-            this.viewGadgets.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.viewGadgets.Name = "viewGadgets";
-            this.viewGadgets.Size = new System.Drawing.Size(829, 552);
-            this.viewGadgets.Source = global::YoshidayaGadgetsCS.Properties.Settings.Default.StartPageUrl;
-            this.viewGadgets.TabIndex = 0;
-            this.viewGadgets.ZoomFactor = 1D;
             // 
             // pictureBox1
             // 
@@ -65,6 +48,22 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // viewGadgets
+            // 
+            this.viewGadgets.AllowExternalDrop = true;
+            this.viewGadgets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.viewGadgets.CreationProperties = null;
+            this.viewGadgets.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.viewGadgets.Location = new System.Drawing.Point(-1, 1);
+            this.viewGadgets.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.viewGadgets.Name = "viewGadgets";
+            this.viewGadgets.Size = new System.Drawing.Size(829, 552);
+            this.viewGadgets.Source = global::YoshidayaGadgetsCS.Properties.Settings.Default.GadgetsStartPageUrl;
+            this.viewGadgets.TabIndex = 0;
+            this.viewGadgets.ZoomFactor = 1D;
+            // 
             // formGadgets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -72,13 +71,17 @@
             this.ClientSize = new System.Drawing.Size(827, 553);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.viewGadgets);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Opacity", global::YoshidayaGadgetsCS.Properties.Settings.Default, "GadgetsOpacity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::YoshidayaGadgetsCS.Properties.Settings.Default, "GadgetsTitleName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "formGadgets";
-            this.Text = "吉田屋事務器";
+            this.Opacity = global::YoshidayaGadgetsCS.Properties.Settings.Default.GadgetsOpacity;
+            this.RightToLeftLayout = true;
+            this.Text = global::YoshidayaGadgetsCS.Properties.Settings.Default.GadgetsTitleName;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formGadgets_Closed);
             this.Load += new System.EventHandler(this.formGadgets_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.viewGadgets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viewGadgets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

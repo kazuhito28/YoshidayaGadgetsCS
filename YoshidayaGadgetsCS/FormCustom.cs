@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace YoshidayaGadgetsCS
 {
     public partial class FormCustom : Form
@@ -26,7 +27,7 @@ namespace YoshidayaGadgetsCS
 
             //Properties.Settings.Default.StartPageUrl = new System.Uri(contoso.ToString(), System.UriKind.RelativeOrAbsolute);
 
-            Properties.Settings.Default.StartPageUrl = new Uri(this.textBoxStartPageUrl.Text);
+            Properties.Settings.Default.GadgetsStartPageUrl = new Uri(this.tbStartPageUrl.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,26 +35,32 @@ namespace YoshidayaGadgetsCS
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                textBoxStartPageUrl.Text = openFileDialog1.FileName;
-
+                tbStartPageUrl.Text = openFileDialog1.FileName;
+ 
             }
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
 
-            // TrackBarの値が変更されたらラベルに表示
-            label2.Text = trackBar1.Value.ToString()+"%";
-        }
 
-        private void trackBar1_ValueChanged(object sender, EventArgs e)
-        {
-            trackBar1.Value = (int)((trackBar1.Value / 10) * 10);
-        }
+
 
         private void formCustom_Load(object sender, EventArgs e)
         {
-            this.textBoxStartPageUrl.Text = Properties.Settings.Default.StartPageUrl.ToString();
+            this.tbStartPageUrl.Text = Properties.Settings.Default.GadgetsStartPageUrl.ToString();
+            this.trackBar1.Value = (int)(Properties.Settings.Default.GadgetsOpacity * 10);
+            this.tbTitleName.Text = Properties.Settings.Default.GadgetsTitleName;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.GadgetsOpacity = (double)trackBar1.Value / 10;
+            Properties.Settings.Default.GadgetsTitleName = this.tbTitleName.Text; 
+
         }
     }
+
+
+
+
+
 }
