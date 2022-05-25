@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formGadgets));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.viewGadgets = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewGadgets)).BeginInit();
             this.SuspendLayout();
@@ -64,11 +65,23 @@
             this.viewGadgets.TabIndex = 0;
             this.viewGadgets.ZoomFactor = 1D;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(728, 80);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 40);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // formGadgets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(827, 553);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.viewGadgets);
             this.DataBindings.Add(new System.Windows.Forms.Binding("Opacity", global::YoshidayaGadgetsCS.Properties.Settings.Default, "GadgetsOpacity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -91,6 +104,7 @@
 
         private Microsoft.Web.WebView2.WinForms.WebView2 viewGadgets;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

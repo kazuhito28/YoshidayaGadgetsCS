@@ -46,6 +46,9 @@ namespace YoshidayaGadgetsCS
 
         private void formCustom_Load(object sender, EventArgs e)
         {
+
+
+
             this.tbStartPageUrl.Text = Properties.Settings.Default.GadgetsStartPageUrl.ToString();
             this.trackBar1.Value = (int)(Properties.Settings.Default.GadgetsOpacity * 10);
             this.tbTitleName.Text = Properties.Settings.Default.GadgetsTitleName;
@@ -56,6 +59,29 @@ namespace YoshidayaGadgetsCS
             Properties.Settings.Default.GadgetsOpacity = (double)trackBar1.Value / 10;
             Properties.Settings.Default.GadgetsTitleName = this.tbTitleName.Text; 
 
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.GadgetsFixed = this.chkboxFixed.Checked;
+
+
+
+            if (Properties.Settings.Default.GadgetsFixed)
+            
+            {
+                MessageBox.Show("true");
+                Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.None;
+                Program.formGadgetsInstance.ShowInTaskbar = false;
+            }
+
+            else
+            
+            {
+                MessageBox.Show("false");
+                Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.Sizable;
+                Program.formGadgetsInstance.ShowInTaskbar = true;
+            }
         }
     }
 

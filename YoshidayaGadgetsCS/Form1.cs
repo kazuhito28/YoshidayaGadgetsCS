@@ -31,6 +31,39 @@ namespace YoshidayaGadgetsCS
             viewGadgets.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
         }
 
+        [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            //IntPtr WinHandle = FindWindow(null, "Program Manager");
+            //if (WinHandle != null)
+            //{
+            //    SetParent(this.Handle, WinHandle);
+            //}
+
+
+            System.IntPtr hProgramManagerHandle = FindWindow(null, "Program Manager");
+
+            if (!hProgramManagerHandle.Equals(System.IntPtr.Zero))
+            {
+
+                this.FormBorderStyle = FormBorderStyle.Sizable;
+                this.ShowInTaskbar = false;
+                SetParent(Handle, hProgramManagerHandle);
+                //this.FormBorderStyle = FormBorderStyle.Sizable;
+                //this.ShowInTaskbar = true;
+
+
+            }
+
+
+
+        }
+
         private void formGadgets_Load(object sender, EventArgs e)
         {
 
@@ -166,13 +199,13 @@ namespace YoshidayaGadgetsCS
         );
 
 
-        public void goWindowBack(IntPtr Handle)
-        {
-            System.IntPtr hProgramManagerHandle = FindWindow(null, "Program Manager");
+        //public void goWindowBack(IntPtr Handle)
+        //{
+        //    System.IntPtr hProgramManagerHandle = FindWindow(null, "Program Manager");
 
-            if (!hProgramManagerHandle.Equals(System.IntPtr.Zero))
-                SetParent(Handle, hProgramManagerHandle);
-        }
+        //    if (!hProgramManagerHandle.Equals(System.IntPtr.Zero))
+        //        SetParent(Handle, hProgramManagerHandle);
+        //}
 
     }
 

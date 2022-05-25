@@ -32,7 +32,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbStartPageUrl = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tbTitleName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,7 +41,12 @@
             this.btnFileOpen = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkboxBottom = new System.Windows.Forms.CheckBox();
+            this.chkboxTop = new System.Windows.Forms.CheckBox();
+            this.chkboxFixed = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -84,17 +88,6 @@
             this.checkBox1.TabIndex = 5;
             this.checkBox1.Text = "ガジェットを自動起動する";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(26, 318);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(204, 19);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "ガジェットを最背面に配置する";
-            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // trackBar1
             // 
@@ -179,11 +172,56 @@
             this.btnCancel.Text = "キャンセル";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chkboxBottom);
+            this.groupBox1.Controls.Add(this.chkboxTop);
+            this.groupBox1.Location = new System.Drawing.Point(440, 168);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(152, 112);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "ガジェットの表示";
+            // 
+            // chkboxBottom
+            // 
+            this.chkboxBottom.AutoSize = true;
+            this.chkboxBottom.Location = new System.Drawing.Point(16, 56);
+            this.chkboxBottom.Name = "chkboxBottom";
+            this.chkboxBottom.Size = new System.Drawing.Size(74, 19);
+            this.chkboxBottom.TabIndex = 1;
+            this.chkboxBottom.Text = "最背面";
+            this.chkboxBottom.UseVisualStyleBackColor = true;
+            // 
+            // chkboxTop
+            // 
+            this.chkboxTop.AutoSize = true;
+            this.chkboxTop.Location = new System.Drawing.Point(16, 32);
+            this.chkboxTop.Name = "chkboxTop";
+            this.chkboxTop.Size = new System.Drawing.Size(74, 19);
+            this.chkboxTop.TabIndex = 0;
+            this.chkboxTop.Text = "最前面";
+            this.chkboxTop.UseVisualStyleBackColor = true;
+            // 
+            // chkboxFixed
+            // 
+            this.chkboxFixed.AutoSize = true;
+            this.chkboxFixed.Location = new System.Drawing.Point(24, 320);
+            this.chkboxFixed.Margin = new System.Windows.Forms.Padding(2);
+            this.chkboxFixed.Name = "chkboxFixed";
+            this.chkboxFixed.Size = new System.Drawing.Size(147, 19);
+            this.chkboxFixed.TabIndex = 17;
+            this.chkboxFixed.Text = "ガジェットを固定する";
+            this.chkboxFixed.UseVisualStyleBackColor = true;
+            this.chkboxFixed.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // FormCustom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 375);
+            this.Controls.Add(this.chkboxFixed);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnFileOpen);
@@ -192,7 +230,6 @@
             this.Controls.Add(this.tbTitleName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.tbStartPageUrl);
             this.Controls.Add(this.label2);
@@ -202,6 +239,8 @@
             this.Text = "FormCustom";
             this.Load += new System.EventHandler(this.formCustom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,7 +252,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbStartPageUrl;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.TextBox tbTitleName;
         private System.Windows.Forms.Label label3;
@@ -223,5 +261,9 @@
         private System.Windows.Forms.Button btnFileOpen;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkboxBottom;
+        private System.Windows.Forms.CheckBox chkboxTop;
+        private System.Windows.Forms.CheckBox chkboxFixed;
     }
 }

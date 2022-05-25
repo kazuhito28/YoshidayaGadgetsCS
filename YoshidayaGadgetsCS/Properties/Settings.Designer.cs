@@ -94,5 +94,29 @@ namespace YoshidayaGadgetsCS.Properties {
                 this["GadgetsTitleName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GadgetsFixed {
+            get {
+                return ((bool)(this["GadgetsFixed"]));
+            }
+            set {
+                this["GadgetsFixed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int GadgetsLayer {
+            get {
+                return ((int)(this["GadgetsLayer"]));
+            }
+            set {
+                this["GadgetsLayer"] = value;
+            }
+        }
     }
 }

@@ -20,5 +20,11 @@
     <Setting Name="GadgetsTitleName" Type="System.String" Scope="User">
       <Value Profile="(Default)">吉田屋事務器</Value>
     </Setting>
+    <Setting Name="GadgetsFixed" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="GadgetsLayer" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
