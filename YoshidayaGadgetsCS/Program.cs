@@ -20,7 +20,7 @@ namespace YoshidayaGadgetsCS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formGadgets());
+            //Application.Run(new formGadgets());
 
             formGadgetsInstance = new formGadgets();
             Application.Run(formGadgetsInstance);
