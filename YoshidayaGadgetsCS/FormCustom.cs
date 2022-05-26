@@ -16,6 +16,7 @@ namespace YoshidayaGadgetsCS
         public FormCustom()
         {
             InitializeComponent();
+
         }
 
 
@@ -41,36 +42,47 @@ namespace YoshidayaGadgetsCS
         }
 
 
-
+        trackBar1.
 
 
         private void formCustom_Load(object sender, EventArgs e)
         {
-
-
+            trackBar1.ValueChanged += new System.EventHandler(trackBar1_ValueChanged);
+            
+            trackBar1.ValueChanged こうやってた探すしかない？
 
             this.tbStartPageUrl.Text = Properties.Settings.Default.GadgetsStartPageUrl.ToString();
             this.trackBar1.Value = (int)(Properties.Settings.Default.GadgetsOpacity * 10);
             this.tbTitleName.Text = Properties.Settings.Default.GadgetsTitleName;
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
+        void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+
+            Properties.Settings.Default.GadgetsOpacity = (double)trackBar1.Value / 10;
+
+        }
+
+            private void btnOK_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.GadgetsOpacity = (double)trackBar1.Value / 10;
             Properties.Settings.Default.GadgetsTitleName = this.tbTitleName.Text; 
 
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        
+
+
+
+
+        private void chkBoxFixed_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.GadgetsFixed = this.chkboxFixed.Checked;
-
-
 
             if (Properties.Settings.Default.GadgetsFixed)
             
             {
-                MessageBox.Show("true");
+
                 Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.None;
                 Program.formGadgetsInstance.ShowInTaskbar = false;
             }
@@ -78,10 +90,15 @@ namespace YoshidayaGadgetsCS
             else
             
             {
-                MessageBox.Show("false");
+
                 Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.Sizable;
                 Program.formGadgetsInstance.ShowInTaskbar = true;
             }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+
         }
     }
 

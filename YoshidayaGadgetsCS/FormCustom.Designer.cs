@@ -99,6 +99,7 @@
             this.trackBar1.Size = new System.Drawing.Size(376, 56);
             this.trackBar1.TabIndex = 7;
             this.trackBar1.Value = 10;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // tbTitleName
             // 
@@ -213,7 +214,7 @@
             this.chkboxFixed.TabIndex = 17;
             this.chkboxFixed.Text = "ガジェットを固定する";
             this.chkboxFixed.UseVisualStyleBackColor = true;
-            this.chkboxFixed.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.chkboxFixed.CheckedChanged += new System.EventHandler(this.chkBoxFixed_CheckedChanged);
             // 
             // FormCustom
             // 
