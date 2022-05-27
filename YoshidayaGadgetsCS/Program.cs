@@ -11,6 +11,7 @@ namespace YoshidayaGadgetsCS
     {
 
         public static formGadgets formGadgetsInstance;
+        public static FormCustom formCustomInstance;
 
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
@@ -23,7 +24,9 @@ namespace YoshidayaGadgetsCS
             //Application.Run(new formGadgets());
 
             formGadgetsInstance = new formGadgets();
+            formCustomInstance = new FormCustom();
             Application.Run(formGadgetsInstance);
+            Application.Run(formCustomInstance);
 
         }
     }

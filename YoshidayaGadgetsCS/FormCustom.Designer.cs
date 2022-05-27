@@ -32,8 +32,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbStartPageUrl = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.tbTitleName = new System.Windows.Forms.TextBox();
+            this.trackBarOpacity = new System.Windows.Forms.TrackBar();
+            this.textBoxTitleName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             this.chkboxBottom = new System.Windows.Forms.CheckBox();
             this.chkboxTop = new System.Windows.Forms.CheckBox();
             this.chkboxFixed = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +76,7 @@
             this.tbStartPageUrl.Name = "tbStartPageUrl";
             this.tbStartPageUrl.Size = new System.Drawing.Size(378, 22);
             this.tbStartPageUrl.TabIndex = 4;
-            this.tbStartPageUrl.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+
             // 
             // checkBox1
             // 
@@ -89,25 +89,26 @@
             this.checkBox1.Text = "ガジェットを自動起動する";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // trackBar1
+            // trackBarOpacity
             // 
-            this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(26, 203);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(376, 56);
-            this.trackBar1.TabIndex = 7;
-            this.trackBar1.Value = 10;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.trackBarOpacity.LargeChange = 1;
+            this.trackBarOpacity.Location = new System.Drawing.Point(26, 203);
+            this.trackBarOpacity.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarOpacity.Minimum = 1;
+            this.trackBarOpacity.Name = "trackBarOpacity";
+            this.trackBarOpacity.Size = new System.Drawing.Size(376, 56);
+            this.trackBarOpacity.TabIndex = 7;
+            this.trackBarOpacity.Value = 10;
+            this.trackBarOpacity.Scroll += new System.EventHandler(this.trackBarOpacity_Scroll);
             // 
-            // tbTitleName
+            // textBoxTitleName
             // 
-            this.tbTitleName.Location = new System.Drawing.Point(26, 38);
-            this.tbTitleName.Margin = new System.Windows.Forms.Padding(2);
-            this.tbTitleName.Name = "tbTitleName";
-            this.tbTitleName.Size = new System.Drawing.Size(378, 22);
-            this.tbTitleName.TabIndex = 9;
+            this.textBoxTitleName.Location = new System.Drawing.Point(26, 38);
+            this.textBoxTitleName.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxTitleName.Name = "textBoxTitleName";
+            this.textBoxTitleName.Size = new System.Drawing.Size(378, 22);
+            this.textBoxTitleName.TabIndex = 9;
+            this.textBoxTitleName.TextChanged += new System.EventHandler(this.textBoxTitleName_TextChanged);
             // 
             // label3
             // 
@@ -228,9 +229,9 @@
             this.Controls.Add(this.btnFileOpen);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.tbTitleName);
+            this.Controls.Add(this.textBoxTitleName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.trackBarOpacity);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.tbStartPageUrl);
             this.Controls.Add(this.label2);
@@ -239,7 +240,7 @@
             this.Name = "FormCustom";
             this.Text = "FormCustom";
             this.Load += new System.EventHandler(this.formCustom_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -253,8 +254,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbStartPageUrl;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TextBox tbTitleName;
+        private System.Windows.Forms.TrackBar trackBarOpacity;
+        private System.Windows.Forms.TextBox textBoxTitleName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;

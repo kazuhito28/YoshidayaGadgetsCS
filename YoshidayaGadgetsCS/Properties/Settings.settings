@@ -15,7 +15,7 @@
       <Value Profile="(Default)">https://www.yoshidayanet.com/</Value>
     </Setting>
     <Setting Name="GadgetsOpacity" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.5</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="GadgetsTitleName" Type="System.String" Scope="User">
       <Value Profile="(Default)">吉田屋事務器</Value>

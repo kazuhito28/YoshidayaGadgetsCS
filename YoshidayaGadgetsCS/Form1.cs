@@ -39,12 +39,6 @@ namespace YoshidayaGadgetsCS
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //IntPtr WinHandle = FindWindow(null, "Program Manager");
-            //if (WinHandle != null)
-            //{
-            //    SetParent(this.Handle, WinHandle);
-            //}
-
 
             System.IntPtr hProgramManagerHandle = FindWindow(null, "Program Manager");
 
@@ -54,8 +48,6 @@ namespace YoshidayaGadgetsCS
                 this.FormBorderStyle = FormBorderStyle.Sizable;
                 this.ShowInTaskbar = false;
                 SetParent(Handle, hProgramManagerHandle);
-                //this.FormBorderStyle = FormBorderStyle.Sizable;
-                //this.ShowInTaskbar = true;
 
 
             }
@@ -92,6 +84,7 @@ namespace YoshidayaGadgetsCS
 
         private void WebView2_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
+
             try
             
             {
