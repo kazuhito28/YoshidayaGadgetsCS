@@ -21,6 +21,7 @@ namespace YoshidayaGadgetsCS
         public formGadgets()
         {
             InitializeComponent();
+            Program.formGadgetsInstance = this;
 
         }
 
@@ -80,77 +81,99 @@ namespace YoshidayaGadgetsCS
 
             _ = InitializeAsync();
 
+            ////表示するビットマップイメージを取得
+            //Bitmap bmp = new Bitmap("C:\\Users\\user\\source\\repos\\YoshidayaGadgetsCS\\YoshidayaGadgetsCS\\Custom.png");
+            ////ビットマップイメージで透過する色を指定（背景部分の色を取得）
+            //bmp.MakeTransparent();
+            ////PictureBoxの背景色を設定
+            ////pictureBox1.BackColor = Color.Blue;
+            ////PictureBoxにビットマップイメージを設定
+            //pictureBox1.Image = bmp;
+
         }
 
         private void WebView2_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
 
-            try
-            
-            {
 
-                string decstr = HttpUtility.UrlDecode(e.Uri);
 
-                //MessageBox.Show("start\n"+decstr);
-
-                if (!decstr.Contains(Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
+                try
 
                 {
 
-                    e.Cancel = true; // webview2内でのアクセスをキャンセル
+                    string decstr = HttpUtility.UrlDecode(e.Uri);
 
-                    Process.Start(e.Uri); // デフォルトブラウザで開く
+                    //MessageBox.Show("start\n"+decstr);
 
-                    return;
+                    if (!decstr.Contains(Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
+
+                    {
+
+                        e.Cancel = true; // webview2内でのアクセスをキャンセル
+
+                        Process.Start(e.Uri); // デフォルトブラウザで開く
+
+                        return;
+                    }
+
+
+
+
                 }
-                
 
+                catch (Exception er)
 
+                {
+                    MessageBox.Show(e.Uri.ToString());
+                    MessageBox.Show(er.ToString());
+                }
 
-            }
-            
-            catch (Exception er)
-            
-            {
-                MessageBox.Show(e.Uri.ToString());
-                MessageBox.Show(er.ToString());
-            }
         }
 
         private void CoreWebView2_NewWindowRequested(object sender, CoreWebView2NewWindowRequestedEventArgs e)
         {
-            try 
 
-            {
-                string decstr = HttpUtility.UrlDecode(e.Uri);
-                MessageBox.Show("Request\n"+decstr);
 
-                e.Handled = true; // NewWindowのキャンセル
-
-                if (!decstr.Contains( Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
+                try
 
                 {
+                    string decstr = HttpUtility.UrlDecode(e.Uri);
+                    MessageBox.Show("Request\n" + decstr);
 
-                    Process.Start(e.Uri);
-                    return;
+                    e.Handled = true; // NewWindowのキャンセル
+
+                    if (!decstr.Contains(Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
+
+                    {
+
+                        Process.Start(e.Uri);
+                        return;
+                    }
                 }
-            }
 
-            catch (Exception er)
-            
-            {
-                MessageBox.Show("ErrCode 1234 : " + er.ToString());
-                MessageBox.Show(Properties.Settings.Default.GadgetsStartPageUrl.ToString());
+                catch (Exception er)
 
-            }
+                {
+                    MessageBox.Show("ErrCode 1234 : " + er.ToString());
+                    MessageBox.Show(Properties.Settings.Default.GadgetsStartPageUrl.ToString());
+
+                }
+
 
 
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            FormCustom FormCustom = new FormCustom();
-            FormCustom.Show();
+
+            if (Program.formCustomInstance == null || Program.formCustomInstance.IsDisposed)
+
+            {
+
+                    FormCustom FormCustom = new FormCustom();
+                    FormCustom.Show();
+
+            }
         }
 
         private void formGadgets_Closed(object sender, FormClosedEventArgs e)
@@ -173,7 +196,7 @@ namespace YoshidayaGadgetsCS
             Properties.Settings.Default.Save();
         }
 
-  
+
     }
 
     //最背面に配置するため

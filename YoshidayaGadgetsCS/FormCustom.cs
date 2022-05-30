@@ -15,6 +15,7 @@ namespace YoshidayaGadgetsCS
         public FormCustom()
         {
             InitializeComponent();
+            Program.formCustomInstance = this;
         }
 
         //private void textBox1_TextChanged(object sender, EventArgs e)
@@ -27,24 +28,19 @@ namespace YoshidayaGadgetsCS
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                tbStartPageUrl.Text = openFileDialog1.FileName;
+                textBoxStartPageUrl.Text = openFileDialog1.FileName;
+                Properties.Settings.Default.GadgetsStartPageUrl = new Uri(this.textBoxStartPageUrl.Text);
             }
         }
 
 
         private void formCustom_Load(object sender, EventArgs e)
         {
-            this.tbStartPageUrl.Text = Properties.Settings.Default.GadgetsStartPageUrl.ToString();
+            this.textBoxStartPageUrl.Text = Properties.Settings.Default.GadgetsStartPageUrl.ToString();
             this.trackBarOpacity.Value = (int)(Properties.Settings.Default.GadgetsOpacity * 10);
             this.textBoxTitleName.Text = Properties.Settings.Default.GadgetsTitleName;
         }
 
-
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.GadgetsOpacity = (double)trackBarOpacity.Value / 10;
-            Properties.Settings.Default.GadgetsStartPageUrl = new Uri(this.tbStartPageUrl.Text);
-        }
 
 
         private void chkBoxFixed_CheckedChanged(object sender, EventArgs e)
@@ -75,5 +71,14 @@ namespace YoshidayaGadgetsCS
         {
             Properties.Settings.Default.GadgetsTitleName = this.textBoxTitleName.Text;
         }
+
+
+
+        private void TextBoxStartPageUrl_Validated(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.GadgetsStartPageUrl = new Uri(this.textBoxStartPageUrl.Text);
+        }
+
+
     }
 }

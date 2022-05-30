@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbStartPageUrl = new System.Windows.Forms.TextBox();
+            this.textBoxStartPageUrl = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.trackBarOpacity = new System.Windows.Forms.TrackBar();
             this.textBoxTitleName = new System.Windows.Forms.TextBox();
@@ -39,8 +39,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnFileOpen = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkboxBottom = new System.Windows.Forms.CheckBox();
             this.chkboxTop = new System.Windows.Forms.CheckBox();
@@ -69,14 +67,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "透明度（%）";
             // 
-            // tbStartPageUrl
+            // textBoxStartPageUrl
             // 
-            this.tbStartPageUrl.Location = new System.Drawing.Point(26, 115);
-            this.tbStartPageUrl.Margin = new System.Windows.Forms.Padding(2);
-            this.tbStartPageUrl.Name = "tbStartPageUrl";
-            this.tbStartPageUrl.Size = new System.Drawing.Size(378, 22);
-            this.tbStartPageUrl.TabIndex = 4;
-
+            this.textBoxStartPageUrl.Location = new System.Drawing.Point(26, 115);
+            this.textBoxStartPageUrl.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxStartPageUrl.Name = "textBoxStartPageUrl";
+            this.textBoxStartPageUrl.Size = new System.Drawing.Size(378, 22);
+            this.textBoxStartPageUrl.TabIndex = 4;
+            this.textBoxStartPageUrl.Validated += new System.EventHandler(this.TextBoxStartPageUrl_Validated);
             // 
             // checkBox1
             // 
@@ -155,25 +153,6 @@
             this.btnFileOpen.UseVisualStyleBackColor = true;
             this.btnFileOpen.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(512, 320);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(100, 31);
-            this.btnOK.TabIndex = 14;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(392, 320);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 31);
-            this.btnCancel.TabIndex = 15;
-            this.btnCancel.Text = "キャンセル";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chkboxBottom);
@@ -224,8 +203,6 @@
             this.ClientSize = new System.Drawing.Size(640, 375);
             this.Controls.Add(this.chkboxFixed);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnFileOpen);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
@@ -233,12 +210,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.trackBarOpacity);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.tbStartPageUrl);
+            this.Controls.Add(this.textBoxStartPageUrl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormCustom";
             this.Text = "FormCustom";
+
             this.Load += new System.EventHandler(this.formCustom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -252,7 +230,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbStartPageUrl;
+        private System.Windows.Forms.TextBox textBoxStartPageUrl;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TrackBar trackBarOpacity;
         private System.Windows.Forms.TextBox textBoxTitleName;
@@ -261,8 +239,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnFileOpen;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkboxBottom;
         private System.Windows.Forms.CheckBox chkboxTop;

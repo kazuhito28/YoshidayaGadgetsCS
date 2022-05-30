@@ -38,8 +38,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(751, 11);
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(752, 8);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
@@ -60,7 +62,7 @@
             this.viewGadgets.Location = new System.Drawing.Point(-1, 1);
             this.viewGadgets.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.viewGadgets.Name = "viewGadgets";
-            this.viewGadgets.Size = new System.Drawing.Size(829, 552);
+            this.viewGadgets.Size = new System.Drawing.Size(825, 552);
             this.viewGadgets.Source = global::YoshidayaGadgetsCS.Properties.Settings.Default.GadgetsStartPageUrl;
             this.viewGadgets.TabIndex = 0;
             this.viewGadgets.ZoomFactor = 1D;
@@ -69,6 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(827, 553);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.viewGadgets);

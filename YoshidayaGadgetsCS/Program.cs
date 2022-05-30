@@ -10,8 +10,8 @@ namespace YoshidayaGadgetsCS
     internal static class Program
     {
 
-        public static formGadgets formGadgetsInstance;
-        public static FormCustom formCustomInstance;
+        public static formGadgets formGadgetsInstance = null;
+        public static FormCustom formCustomInstance = null;
 
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
@@ -21,12 +21,7 @@ namespace YoshidayaGadgetsCS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new formGadgets());
-
-            formGadgetsInstance = new formGadgets();
-            formCustomInstance = new FormCustom();
-            Application.Run(formGadgetsInstance);
-            Application.Run(formCustomInstance);
+            Application.Run(new formGadgets());
 
         }
     }
