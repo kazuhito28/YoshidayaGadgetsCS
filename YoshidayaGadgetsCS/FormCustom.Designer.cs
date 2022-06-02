@@ -40,8 +40,9 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnFileOpen = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkboxBottom = new System.Windows.Forms.CheckBox();
-            this.chkboxTop = new System.Windows.Forms.CheckBox();
+            this.RadioButtonFormZNone = new System.Windows.Forms.RadioButton();
+            this.RadioButtonFormZBottom = new System.Windows.Forms.RadioButton();
+            this.RadioButtonFormZTop = new System.Windows.Forms.RadioButton();
             this.chkboxFixed = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -50,39 +51,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 98);
+            this.label1.Location = new System.Drawing.Point(32, 118);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 15);
+            this.label1.Size = new System.Drawing.Size(107, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "スタートページ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 177);
+            this.label2.Location = new System.Drawing.Point(32, 212);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 15);
+            this.label2.Size = new System.Drawing.Size(89, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "透明度（%）";
             // 
             // textBoxStartPageUrl
             // 
-            this.textBoxStartPageUrl.Location = new System.Drawing.Point(26, 115);
+            this.textBoxStartPageUrl.Location = new System.Drawing.Point(32, 138);
             this.textBoxStartPageUrl.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxStartPageUrl.Name = "textBoxStartPageUrl";
-            this.textBoxStartPageUrl.Size = new System.Drawing.Size(378, 22);
+            this.textBoxStartPageUrl.Size = new System.Drawing.Size(472, 25);
             this.textBoxStartPageUrl.TabIndex = 4;
             this.textBoxStartPageUrl.Validated += new System.EventHandler(this.TextBoxStartPageUrl_Validated);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(26, 283);
+            this.checkBox1.Location = new System.Drawing.Point(32, 340);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(177, 19);
+            this.checkBox1.Size = new System.Drawing.Size(212, 22);
             this.checkBox1.TabIndex = 5;
             this.checkBox1.Text = "ガジェットを自動起動する";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -90,51 +91,51 @@
             // trackBarOpacity
             // 
             this.trackBarOpacity.LargeChange = 1;
-            this.trackBarOpacity.Location = new System.Drawing.Point(26, 203);
+            this.trackBarOpacity.Location = new System.Drawing.Point(32, 244);
             this.trackBarOpacity.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarOpacity.Minimum = 1;
             this.trackBarOpacity.Name = "trackBarOpacity";
-            this.trackBarOpacity.Size = new System.Drawing.Size(376, 56);
+            this.trackBarOpacity.Size = new System.Drawing.Size(470, 69);
             this.trackBarOpacity.TabIndex = 7;
             this.trackBarOpacity.Value = 10;
             this.trackBarOpacity.Scroll += new System.EventHandler(this.trackBarOpacity_Scroll);
             // 
             // textBoxTitleName
             // 
-            this.textBoxTitleName.Location = new System.Drawing.Point(26, 38);
+            this.textBoxTitleName.Location = new System.Drawing.Point(32, 46);
             this.textBoxTitleName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTitleName.Name = "textBoxTitleName";
-            this.textBoxTitleName.Size = new System.Drawing.Size(378, 22);
+            this.textBoxTitleName.Size = new System.Drawing.Size(472, 25);
             this.textBoxTitleName.TabIndex = 9;
             this.textBoxTitleName.TextChanged += new System.EventHandler(this.textBoxTitleName_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 20);
+            this.label3.Location = new System.Drawing.Point(32, 24);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 15);
+            this.label3.Size = new System.Drawing.Size(190, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "ガジェット名（タイトルバー）";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 247);
+            this.label4.Location = new System.Drawing.Point(42, 296);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 15);
+            this.label4.Size = new System.Drawing.Size(26, 18);
             this.label4.TabIndex = 10;
             this.label4.Text = "10";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(374, 247);
+            this.label6.Location = new System.Drawing.Point(468, 296);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 15);
+            this.label6.Size = new System.Drawing.Size(35, 18);
             this.label6.TabIndex = 12;
             this.label6.Text = "100";
             // 
@@ -144,10 +145,10 @@
             // 
             // btnFileOpen
             // 
-            this.btnFileOpen.Location = new System.Drawing.Point(421, 110);
+            this.btnFileOpen.Location = new System.Drawing.Point(526, 132);
             this.btnFileOpen.Margin = new System.Windows.Forms.Padding(2);
             this.btnFileOpen.Name = "btnFileOpen";
-            this.btnFileOpen.Size = new System.Drawing.Size(100, 31);
+            this.btnFileOpen.Size = new System.Drawing.Size(125, 37);
             this.btnFileOpen.TabIndex = 13;
             this.btnFileOpen.Text = "参照";
             this.btnFileOpen.UseVisualStyleBackColor = true;
@@ -155,42 +156,62 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chkboxBottom);
-            this.groupBox1.Controls.Add(this.chkboxTop);
-            this.groupBox1.Location = new System.Drawing.Point(440, 168);
+            this.groupBox1.Controls.Add(this.RadioButtonFormZNone);
+            this.groupBox1.Controls.Add(this.RadioButtonFormZBottom);
+            this.groupBox1.Controls.Add(this.RadioButtonFormZTop);
+            this.groupBox1.Location = new System.Drawing.Point(550, 202);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(152, 112);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(190, 134);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ガジェットの表示";
             // 
-            // chkboxBottom
+            // RadioButtonFormZNone
             // 
-            this.chkboxBottom.AutoSize = true;
-            this.chkboxBottom.Location = new System.Drawing.Point(16, 56);
-            this.chkboxBottom.Name = "chkboxBottom";
-            this.chkboxBottom.Size = new System.Drawing.Size(74, 19);
-            this.chkboxBottom.TabIndex = 1;
-            this.chkboxBottom.Text = "最背面";
-            this.chkboxBottom.UseVisualStyleBackColor = true;
+            this.RadioButtonFormZNone.AutoSize = true;
+            this.RadioButtonFormZNone.Checked = true;
+            this.RadioButtonFormZNone.Location = new System.Drawing.Point(24, 104);
+            this.RadioButtonFormZNone.Name = "RadioButtonFormZNone";
+            this.RadioButtonFormZNone.Size = new System.Drawing.Size(112, 22);
+            this.RadioButtonFormZNone.TabIndex = 2;
+            this.RadioButtonFormZNone.TabStop = true;
+            this.RadioButtonFormZNone.Text = "指定しない";
+            this.RadioButtonFormZNone.UseVisualStyleBackColor = true;
+            this.RadioButtonFormZNone.CheckedChanged += new System.EventHandler(this.RadioButtonFormZCheck);
             // 
-            // chkboxTop
+            // RadioButtonFormZBottom
             // 
-            this.chkboxTop.AutoSize = true;
-            this.chkboxTop.Location = new System.Drawing.Point(16, 32);
-            this.chkboxTop.Name = "chkboxTop";
-            this.chkboxTop.Size = new System.Drawing.Size(74, 19);
-            this.chkboxTop.TabIndex = 0;
-            this.chkboxTop.Text = "最前面";
-            this.chkboxTop.UseVisualStyleBackColor = true;
+            this.RadioButtonFormZBottom.AutoSize = true;
+            this.RadioButtonFormZBottom.Location = new System.Drawing.Point(24, 72);
+            this.RadioButtonFormZBottom.Name = "RadioButtonFormZBottom";
+            this.RadioButtonFormZBottom.Size = new System.Drawing.Size(87, 22);
+            this.RadioButtonFormZBottom.TabIndex = 1;
+            this.RadioButtonFormZBottom.TabStop = true;
+            this.RadioButtonFormZBottom.Text = "最背面";
+            this.RadioButtonFormZBottom.UseVisualStyleBackColor = true;
+            this.RadioButtonFormZBottom.CheckedChanged += new System.EventHandler(this.RadioButtonFormZCheck);
+            // 
+            // RadioButtonFormZTop
+            // 
+            this.RadioButtonFormZTop.AutoSize = true;
+            this.RadioButtonFormZTop.Location = new System.Drawing.Point(24, 40);
+            this.RadioButtonFormZTop.Name = "RadioButtonFormZTop";
+            this.RadioButtonFormZTop.Size = new System.Drawing.Size(87, 22);
+            this.RadioButtonFormZTop.TabIndex = 0;
+            this.RadioButtonFormZTop.TabStop = true;
+            this.RadioButtonFormZTop.Text = "最前面";
+            this.RadioButtonFormZTop.UseVisualStyleBackColor = true;
+            this.RadioButtonFormZTop.CheckedChanged += new System.EventHandler(this.RadioButtonFormZCheck);
             // 
             // chkboxFixed
             // 
             this.chkboxFixed.AutoSize = true;
-            this.chkboxFixed.Location = new System.Drawing.Point(24, 320);
+            this.chkboxFixed.Location = new System.Drawing.Point(30, 384);
             this.chkboxFixed.Margin = new System.Windows.Forms.Padding(2);
             this.chkboxFixed.Name = "chkboxFixed";
-            this.chkboxFixed.Size = new System.Drawing.Size(147, 19);
+            this.chkboxFixed.Size = new System.Drawing.Size(176, 22);
             this.chkboxFixed.TabIndex = 17;
             this.chkboxFixed.Text = "ガジェットを固定する";
             this.chkboxFixed.UseVisualStyleBackColor = true;
@@ -198,9 +219,9 @@
             // 
             // FormCustom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 375);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chkboxFixed);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnFileOpen);
@@ -216,7 +237,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormCustom";
             this.Text = "FormCustom";
-
             this.Load += new System.EventHandler(this.formCustom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -240,8 +260,9 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnFileOpen;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox chkboxBottom;
-        private System.Windows.Forms.CheckBox chkboxTop;
         private System.Windows.Forms.CheckBox chkboxFixed;
+        private System.Windows.Forms.RadioButton RadioButtonFormZBottom;
+        private System.Windows.Forms.RadioButton RadioButtonFormZTop;
+        private System.Windows.Forms.RadioButton RadioButtonFormZNone;
     }
 }

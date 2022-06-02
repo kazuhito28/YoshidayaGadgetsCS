@@ -18,10 +18,6 @@ namespace YoshidayaGadgetsCS
             Program.formCustomInstance = this;
         }
 
-        //private void textBox1_TextChanged(object sender, EventArgs e)
-        //{
-        //    Properties.Settings.Default.GadgetsStartPageUrl = new Uri(this.tbStartPageUrl.Text);
-        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -48,14 +44,14 @@ namespace YoshidayaGadgetsCS
             Properties.Settings.Default.GadgetsFixed = this.chkboxFixed.Checked;
 
             if (Properties.Settings.Default.GadgetsFixed)
-            
+
             {
                 Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.None;
                 Program.formGadgetsInstance.ShowInTaskbar = false;
             }
 
             else
-            
+
             {
                 Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.Sizable;
                 Program.formGadgetsInstance.ShowInTaskbar = true;
@@ -80,5 +76,30 @@ namespace YoshidayaGadgetsCS
         }
 
 
+
+
+
+        private void RadioButtonFormZCheck(object sender, EventArgs e)
+        {
+            if (RadioButtonFormZNone.Checked) 
+            {
+
+                    Properties.Settings.Default.GadgetsFormZ = 0;
+
+            }
+
+            if (RadioButtonFormZTop.Checked)
+            {
+                Properties.Settings.Default.GadgetsFormZ = 1;
+
+            }
+
+            if (RadioButtonFormZBottom.Checked)
+            {
+
+                Properties.Settings.Default.GadgetsFormZ = -1;
+            }
+
+        }
     }
 }

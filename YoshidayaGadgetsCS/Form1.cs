@@ -18,6 +18,63 @@ namespace YoshidayaGadgetsCS
     public partial class formGadgets : Form
     {
 
+        private const int WM_WINDOWPOSCHANGING = 0x0046;
+
+        private IntPtr HWND_BOTTOM = (IntPtr)1;
+
+        private IntPtr HWND_TOP = (IntPtr)0;
+
+        private IntPtr HWND_TOPMOST = (IntPtr)(-1);
+
+        private IntPtr HWND_NOTOPMOST = (IntPtr)(-2);
+
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WINDOWPOS
+        {
+            public IntPtr hwnd;
+            public IntPtr hwndInsertAfter;
+            public int x;
+            public int y;
+            public int cx;
+            public int cy;
+            public uint flags;
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case WM_WINDOWPOSCHANGING:
+
+                        WINDOWPOS wp = (WINDOWPOS)Marshal.PtrToStructure(m.LParam, typeof(WINDOWPOS));
+                        
+                        if (Properties.Settings.Default.GadgetsFormZ == 1)
+                        {
+                            wp.hwndInsertAfter = HWND_TOPMOST;
+                        }
+
+                        else if (Properties.Settings.Default.GadgetsFormZ == -1)
+                        
+                        {
+                            wp.hwndInsertAfter = HWND_BOTTOM;
+                        }
+
+                        else if (Properties.Settings.Default.GadgetsFormZ == 0)
+
+                        {
+                            wp.hwndInsertAfter = HWND_NOTOPMOST;
+
+
+                    }
+
+                        Marshal.StructureToPtr(wp, m.LParam, true);
+
+                    break;
+            }
+            base.WndProc(ref m);
+        }
+
         public formGadgets()
         {
             InitializeComponent();
@@ -198,6 +255,8 @@ namespace YoshidayaGadgetsCS
 
 
     }
+
+
 
     //最背面に配置するため
     public class WindowBack

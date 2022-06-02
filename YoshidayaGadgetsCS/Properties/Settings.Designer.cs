@@ -118,5 +118,17 @@ namespace YoshidayaGadgetsCS.Properties {
                 this["GadgetsLayer"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int GadgetsFormZ {
+            get {
+                return ((int)(this["GadgetsFormZ"]));
+            }
+            set {
+                this["GadgetsFormZ"] = value;
+            }
+        }
     }
 }
