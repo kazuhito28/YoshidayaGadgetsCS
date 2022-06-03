@@ -18,7 +18,6 @@ namespace YoshidayaGadgetsCS
             Program.formCustomInstance = this;
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult dr = openFileDialog1.ShowDialog();
@@ -29,15 +28,12 @@ namespace YoshidayaGadgetsCS
             }
         }
 
-
         private void formCustom_Load(object sender, EventArgs e)
         {
             this.textBoxStartPageUrl.Text = Properties.Settings.Default.GadgetsStartPageUrl.ToString();
             this.trackBarOpacity.Value = (int)(Properties.Settings.Default.GadgetsOpacity * 10);
             this.textBoxTitleName.Text = Properties.Settings.Default.GadgetsTitleName;
         }
-
-
 
         private void chkBoxFixed_CheckedChanged(object sender, EventArgs e)
         {
@@ -68,37 +64,30 @@ namespace YoshidayaGadgetsCS
             Properties.Settings.Default.GadgetsTitleName = this.textBoxTitleName.Text;
         }
 
-
-
         private void TextBoxStartPageUrl_Validated(object sender, EventArgs e)
         {
             Properties.Settings.Default.GadgetsStartPageUrl = new Uri(this.textBoxStartPageUrl.Text);
         }
 
-
-
-
-
         private void RadioButtonFormZCheck(object sender, EventArgs e)
         {
-            if (RadioButtonFormZNone.Checked) 
+            if (RadioButtonFormZNone.Checked)
             {
-
-                    Properties.Settings.Default.GadgetsFormZ = 0;
-
+                Properties.Settings.Default.GadgetsFormZ = 0; //指定しない
             }
 
             if (RadioButtonFormZTop.Checked)
             {
-                Properties.Settings.Default.GadgetsFormZ = 1;
-
+                Properties.Settings.Default.GadgetsFormZ = 1; //最前面
             }
 
             if (RadioButtonFormZBottom.Checked)
             {
-
-                Properties.Settings.Default.GadgetsFormZ = -1;
+                Properties.Settings.Default.GadgetsFormZ = -1; //最背面
             }
+
+            //WndProc(ref Message m);
+            //form1.active;
 
         }
     }

@@ -47,32 +47,33 @@ namespace YoshidayaGadgetsCS
             {
                 case WM_WINDOWPOSCHANGING:
 
-                        WINDOWPOS wp = (WINDOWPOS)Marshal.PtrToStructure(m.LParam, typeof(WINDOWPOS));
+                    WINDOWPOS wp = (WINDOWPOS)Marshal.PtrToStructure(m.LParam, typeof(WINDOWPOS));
                         
-                        if (Properties.Settings.Default.GadgetsFormZ == 1)
-                        {
-                            wp.hwndInsertAfter = HWND_TOPMOST;
-                        }
-
-                        else if (Properties.Settings.Default.GadgetsFormZ == -1)
-                        
-                        {
-                            wp.hwndInsertAfter = HWND_BOTTOM;
-                        }
-
-                        else if (Properties.Settings.Default.GadgetsFormZ == 0)
-
-                        {
-                            wp.hwndInsertAfter = HWND_NOTOPMOST;
-
-
+                    if (Properties.Settings.Default.GadgetsFormZ == 1)
+                    {
+                        wp.hwndInsertAfter = HWND_TOPMOST;
                     }
 
-                        Marshal.StructureToPtr(wp, m.LParam, true);
+                    else if (Properties.Settings.Default.GadgetsFormZ == -1)
+                        
+                    {
+                        wp.hwndInsertAfter = HWND_BOTTOM;
+                    }
+
+                    else if (Properties.Settings.Default.GadgetsFormZ == 0)
+
+                    {
+                            wp.hwndInsertAfter = HWND_NOTOPMOST;
+                    }
+
+                    Marshal.StructureToPtr(wp, m.LParam, true);
 
                     break;
             }
+
             base.WndProc(ref m);
+
+
         }
 
         public formGadgets()
@@ -107,16 +108,12 @@ namespace YoshidayaGadgetsCS
                 this.ShowInTaskbar = false;
                 SetParent(Handle, hProgramManagerHandle);
 
-
             }
-
-
 
         }
 
         private void formGadgets_Load(object sender, EventArgs e)
         {
-
 
             // ウィンドウの状態を復元
             if (Properties.Settings.Default.GadgetsSize.Width > 0 && Properties.Settings.Default.GadgetsSize.Height > 0)    // サイズが 0 じゃない
@@ -152,8 +149,6 @@ namespace YoshidayaGadgetsCS
         private void WebView2_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
 
-
-
                 try
 
                 {
@@ -172,9 +167,6 @@ namespace YoshidayaGadgetsCS
 
                         return;
                     }
-
-
-
 
                 }
 
