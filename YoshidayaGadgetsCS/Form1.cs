@@ -41,6 +41,17 @@ namespace YoshidayaGadgetsCS
             public uint flags;
         }
 
+        // ウィンドウポズチェンジングを発生させる
+        [DllImport("user32.dll", EntryPoint = "SetWindowPos")]
+        static extern bool SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
+        const uint SWP_NOSIZE = 0x0001;
+        const uint SWP_NOMOVE = 0x0002;
+        const uint SWP_NOZORDER = 0x0004;
+        const uint SWP_NOACTIVATE = 0x0010;
+        public void f_send_wm_windowposchanging()
+        {
+            SetWindowPos(this.Handle, 0, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+        }
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)

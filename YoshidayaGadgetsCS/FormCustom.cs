@@ -86,8 +86,7 @@ namespace YoshidayaGadgetsCS
                 Properties.Settings.Default.GadgetsFormZ = -1; //最背面
             }
 
-            //WndProc(ref Message m);
-            //form1.active;
+            Program.formGadgetsInstance.f_send_wm_windowposchanging();
 
         }
     }
