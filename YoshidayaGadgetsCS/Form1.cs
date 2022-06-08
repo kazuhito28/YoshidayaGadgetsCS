@@ -50,15 +50,18 @@ namespace YoshidayaGadgetsCS
         const uint SWP_NOACTIVATE = 0x0010;
         public void f_send_wm_windowposchanging()
         {
-            SetWindowPos(this.Handle, 0, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+            SetWindowPos(this.Handle, 0, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOACTIVATE);
             Debug.WriteLine("SetWindowPos");
         }
         protected override void WndProc(ref Message m)
         {
             Debug.WriteLine("WndProc");
+            Debug.WriteLine(m.Msg);
             switch (m.Msg)
             {
                 case WM_WINDOWPOSCHANGING:
+
+                    Debug.WriteLine("WM_WINDOWPOSCHANGING");
 
                     WINDOWPOS wp = (WINDOWPOS)Marshal.PtrToStructure(m.LParam, typeof(WINDOWPOS));
                         
@@ -76,7 +79,8 @@ namespace YoshidayaGadgetsCS
                     else if (Properties.Settings.Default.GadgetsFormZ == 0)
 
                     {
-                            wp.hwndInsertAfter = HWND_NOTOPMOST;
+                        //wp.hwndInsertAfter = HWND_NOTOPMOST;
+                        this.TopMost = false;
                     }
 
                     Marshal.StructureToPtr(wp, m.LParam, true);

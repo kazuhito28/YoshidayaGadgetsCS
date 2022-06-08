@@ -52,6 +52,8 @@ namespace YoshidayaGadgetsCS
                 Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.Sizable;
                 Program.formGadgetsInstance.ShowInTaskbar = true;
             }
+
+            Program.formGadgetsInstance.f_send_wm_windowposchanging();
         }
 
         private void trackBarOpacity_Scroll(object sender, EventArgs e)
