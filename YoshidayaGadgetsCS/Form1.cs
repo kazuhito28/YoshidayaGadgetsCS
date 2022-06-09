@@ -55,8 +55,8 @@ namespace YoshidayaGadgetsCS
         }
         protected override void WndProc(ref Message m)
         {
-            Debug.WriteLine("WndProc");
-            Debug.WriteLine(m.Msg);
+            Debug.WriteLine("WndProc msg=" + m.Msg + " hwnd=" + m.HWnd);
+
             switch (m.Msg)
             {
                 case WM_WINDOWPOSCHANGING:
