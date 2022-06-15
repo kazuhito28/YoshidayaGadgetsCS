@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Microsoft.Web.WebView2.Core;
 using System.Diagnostics;
 using System.Web;
-using System.Runtime.InteropServices; //ウィンドウを最背面に配置するため
+//using System.Runtime.InteropServices; //ウィンドウを最背面に配置するため
 
 namespace YoshidayaGadgetsCS
 {
@@ -18,87 +18,59 @@ namespace YoshidayaGadgetsCS
     public partial class formGadgets : Form
     {
 
-        private const int WM_WINDOWPOSCHANGING = 0x0046;
-
-        private IntPtr HWND_BOTTOM = (IntPtr)1;
-
-        private IntPtr HWND_TOP = (IntPtr)0;
-
-        private IntPtr HWND_TOPMOST = (IntPtr)(-1);
-
-        private IntPtr HWND_NOTOPMOST = (IntPtr)(-2);
-
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct WINDOWPOS
+        public void CustomChanged()
         {
-            public IntPtr hwnd;
-            public IntPtr hwndInsertAfter;
-            public int x;
-            public int y;
-            public int cx;
-            public int cy;
-            public uint flags;
-        }
-
-        // ウィンドウポズチェンジングを発生させる
-        [DllImport("user32.dll", EntryPoint = "SetWindowPos")]
-        static extern bool SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
-        const uint SWP_NOSIZE = 0x0001;
-        const uint SWP_NOMOVE = 0x0002;
-        const uint SWP_NOZORDER = 0x0004;
-        const uint SWP_NOACTIVATE = 0x0010;
-        public void f_send_wm_windowposchanging()
-        {
-            SetWindowPos(this.Handle, 0, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOACTIVATE);
-            Debug.WriteLine("SetWindowPos");
-        }
-        protected override void WndProc(ref Message m)
-        {
-            Debug.WriteLine("WndProc msg=" + m.Msg + " hwnd=" + m.HWnd);
-
-            switch (m.Msg)
+            if (Properties.Settings.Default.GadgetsTopMost)
             {
-                case WM_WINDOWPOSCHANGING:
-
-                    Debug.WriteLine("WM_WINDOWPOSCHANGING");
-
-                    WINDOWPOS wp = (WINDOWPOS)Marshal.PtrToStructure(m.LParam, typeof(WINDOWPOS));
-                        
-                    if (Properties.Settings.Default.GadgetsFormZ == 1)
-                    {
-                        wp.hwndInsertAfter = HWND_TOPMOST;
-                    }
-
-                    else if (Properties.Settings.Default.GadgetsFormZ == -1)
-                        
-                    {
-                        wp.hwndInsertAfter = HWND_BOTTOM;
-                    }
-
-                    else if (Properties.Settings.Default.GadgetsFormZ == 0)
-
-                    {
-                        //wp.hwndInsertAfter = HWND_NOTOPMOST;
-                        this.TopMost = false;
-                    }
-
-                    Marshal.StructureToPtr(wp, m.LParam, true);
-
-                    break;
+                this.TopMost = true;
+            }
+            else
+            {
+                //wp.hwndInsertAfter = HWND_NOTOPMOST;
+                this.TopMost = false;
             }
 
-            base.WndProc(ref m);
+            if (Properties.Settings.Default.GadgetsFixed)
+            {
+                Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.None;
+                Program.formGadgetsInstance.ShowInTaskbar = false;
+            }
+            else
+            {
+                Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.Sizable;
+                Program.formGadgetsInstance.ShowInTaskbar = true;
+            }
 
 
+        }
+
+        NotifyIcon NotifyIconGadgets;
+
+        private void setComponents()
+        {
+            NotifyIconGadgets = new NotifyIcon();
+            // アイコンの設定
+            NotifyIconGadgets.Icon = new Icon(@"C:\Users\user\Downloads\favicon01\favicon01\sky\rainbow\tmrainbow00101.ico");
+            // アイコンを表示する
+            NotifyIconGadgets.Visible = true;
+            // アイコンにマウスポインタを合わせたときのテキスト
+            NotifyIconGadgets.Text = "吉田屋ガジェット";
         }
 
         public formGadgets()
         {
+
+
             InitializeComponent();
+
+            //this.ShowInTaskbar = false;
+            //this.setComponents();
+
             Program.formGadgetsInstance = this;
 
         }
+
+
 
         private async Task InitializeAsync()
         {
@@ -107,27 +79,6 @@ namespace YoshidayaGadgetsCS
             viewGadgets.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
         }
 
-        [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
-            System.IntPtr hProgramManagerHandle = FindWindow(null, "Program Manager");
-
-            if (!hProgramManagerHandle.Equals(System.IntPtr.Zero))
-            {
-
-                this.FormBorderStyle = FormBorderStyle.Sizable;
-                this.ShowInTaskbar = false;
-                SetParent(Handle, hProgramManagerHandle);
-
-            }
-
-        }
 
         private void formGadgets_Load(object sender, EventArgs e)
         {
@@ -150,16 +101,9 @@ namespace YoshidayaGadgetsCS
 
             viewGadgets.NavigationStarting += WebView2_NavigationStarting;
 
-            _ = InitializeAsync();
+            this.CustomChanged();
 
-            ////表示するビットマップイメージを取得
-            //Bitmap bmp = new Bitmap("C:\\Users\\user\\source\\repos\\YoshidayaGadgetsCS\\YoshidayaGadgetsCS\\Custom.png");
-            ////ビットマップイメージで透過する色を指定（背景部分の色を取得）
-            //bmp.MakeTransparent();
-            ////PictureBoxの背景色を設定
-            ////pictureBox1.BackColor = Color.Blue;
-            ////PictureBoxにビットマップイメージを設定
-            //pictureBox1.Image = bmp;
+            _ = InitializeAsync();
 
         }
 
@@ -262,35 +206,11 @@ namespace YoshidayaGadgetsCS
             Properties.Settings.Default.Save();
         }
 
-
+        private void メニュー1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("test");
+        }
     }
 
-
-
-    //最背面に配置するため
-    public class WindowBack
-    {
-        [DllImport("USER32.DLL", CharSet = CharSet.Auto)]
-        private static extern System.IntPtr FindWindow(
-            string lpClassName,
-            string lpWindowName
-        );
-
-        [DllImport("USER32.DLL", CharSet = CharSet.Auto)]
-        private static extern System.IntPtr SetParent(
-            System.IntPtr hWndChild,
-            System.IntPtr hWndNewParent
-        );
-
-
-        //public void goWindowBack(IntPtr Handle)
-        //{
-        //    System.IntPtr hProgramManagerHandle = FindWindow(null, "Program Manager");
-
-        //    if (!hProgramManagerHandle.Equals(System.IntPtr.Zero))
-        //        SetParent(Handle, hProgramManagerHandle);
-        //}
-
-    }
 
 }

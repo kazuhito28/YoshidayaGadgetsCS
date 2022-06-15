@@ -130,5 +130,17 @@ namespace YoshidayaGadgetsCS.Properties {
                 this["GadgetsFormZ"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GadgetsTopMost {
+            get {
+                return ((bool)(this["GadgetsTopMost"]));
+            }
+            set {
+                this["GadgetsTopMost"] = value;
+            }
+        }
     }
 }

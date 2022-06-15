@@ -32,28 +32,15 @@ namespace YoshidayaGadgetsCS
         {
             this.textBoxStartPageUrl.Text = Properties.Settings.Default.GadgetsStartPageUrl.ToString();
             this.trackBarOpacity.Value = (int)(Properties.Settings.Default.GadgetsOpacity * 10);
-            this.textBoxTitleName.Text = Properties.Settings.Default.GadgetsTitleName;
+            //this.textBoxTitleName.Text = Properties.Settings.Default.GadgetsTitleName;
+            //this.CheckBoxTopMost.Checked = Properties.Settings.Default.GadgetsTopMost;
+            //this.CheckBoxFixed.Checked = Properties.Settings.Default.GadgetsFixed;
         }
 
-        private void chkBoxFixed_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxFixed_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.GadgetsFixed = this.chkboxFixed.Checked;
-
-            if (Properties.Settings.Default.GadgetsFixed)
-
-            {
-                Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.None;
-                Program.formGadgetsInstance.ShowInTaskbar = false;
-            }
-
-            else
-
-            {
-                Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.Sizable;
-                Program.formGadgetsInstance.ShowInTaskbar = true;
-            }
-
-            Program.formGadgetsInstance.f_send_wm_windowposchanging();
+            Properties.Settings.Default.GadgetsFixed = this.CheckBoxFixed.Checked;
+            Program.formGadgetsInstance.CustomChanged();
         }
 
         private void trackBarOpacity_Scroll(object sender, EventArgs e)
@@ -71,32 +58,10 @@ namespace YoshidayaGadgetsCS
             Properties.Settings.Default.GadgetsStartPageUrl = new Uri(this.textBoxStartPageUrl.Text);
         }
 
-        private void RadioButtonFormZCheck(object sender, EventArgs e)
+        private void CheckBox_Top_CheckedChanged(object sender, EventArgs e)
         {
-            if (RadioButtonFormZNone.Checked)
-            {
-                Properties.Settings.Default.GadgetsFormZ = 0; //指定しない
-                //Program.formGadgetsInstance.TopMost = false;
-                //this.TopMost = false;
-            }
-
-            if (RadioButtonFormZTop.Checked)
-            {
-                Properties.Settings.Default.GadgetsFormZ = 1; //最前面
-                //Program.formGadgetsInstance.TopMost = true;
-                //this.TopMost = true;
-            }
-
-            if (RadioButtonFormZBottom.Checked)
-            {
-                Properties.Settings.Default.GadgetsFormZ = -1; //最背面
-                //Program.formGadgetsInstance.TopMost = false;
-                //this.TopMost = false;
-
-            }
-
-            Program.formGadgetsInstance.f_send_wm_windowposchanging();
-
+            Properties.Settings.Default.GadgetsTopMost = this.CheckBoxTopMost.Checked;
+            Program.formGadgetsInstance.CustomChanged();
         }
     }
 }
