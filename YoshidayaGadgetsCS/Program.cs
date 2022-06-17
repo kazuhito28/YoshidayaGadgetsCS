@@ -23,8 +23,8 @@ namespace YoshidayaGadgetsCS
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new formGadgets());
 
-            new formGadgets();
-            Application.Run();
+            //new formGadgets();
+            //Application.Run();
 
         }
     }

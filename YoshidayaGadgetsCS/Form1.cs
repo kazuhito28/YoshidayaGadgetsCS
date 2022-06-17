@@ -101,7 +101,7 @@ namespace YoshidayaGadgetsCS
 
             viewGadgets.NavigationStarting += WebView2_NavigationStarting;
 
-            this.CustomChanged();
+            //this.CustomChanged();
 
             _ = InitializeAsync();
 
@@ -209,6 +209,17 @@ namespace YoshidayaGadgetsCS
         private void メニュー1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("test");
+            this.WindowState = FormWindowState.Normal;
+            this.Show();
+        }
+
+        private void FormGadgets_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.Hide();
+            }
         }
     }
 
