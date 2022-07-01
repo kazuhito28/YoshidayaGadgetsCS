@@ -186,6 +186,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormCustom";
+            this.ShowInTaskbar = false;
             this.Text = "FormCustom";
             this.Load += new System.EventHandler(this.formCustom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();

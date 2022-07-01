@@ -33,38 +33,23 @@ namespace YoshidayaGadgetsCS
             if (Properties.Settings.Default.GadgetsFixed)
             {
                 Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.None;
-                Program.formGadgetsInstance.ShowInTaskbar = false;
+                //Program.formGadgetsInstance.ShowInTaskbar = false;
+                this.MenuItem_Freeze.Checked = true;
             }
             else
             {
                 Program.formGadgetsInstance.FormBorderStyle = FormBorderStyle.Sizable;
-                Program.formGadgetsInstance.ShowInTaskbar = true;
+                //Program.formGadgetsInstance.ShowInTaskbar = true;
+                this.MenuItem_Freeze.Checked = false;
             }
 
 
-        }
-
-        NotifyIcon NotifyIconGadgets;
-
-        private void setComponents()
-        {
-            NotifyIconGadgets = new NotifyIcon();
-            // アイコンの設定
-            NotifyIconGadgets.Icon = new Icon(@"C:\Users\user\Downloads\favicon01\favicon01\sky\rainbow\tmrainbow00101.ico");
-            // アイコンを表示する
-            NotifyIconGadgets.Visible = true;
-            // アイコンにマウスポインタを合わせたときのテキスト
-            NotifyIconGadgets.Text = "吉田屋ガジェット";
         }
 
         public formGadgets()
         {
 
-
             InitializeComponent();
-
-            //this.ShowInTaskbar = false;
-            //this.setComponents();
 
             Program.formGadgetsInstance = this;
 
@@ -83,6 +68,16 @@ namespace YoshidayaGadgetsCS
         private void formGadgets_Load(object sender, EventArgs e)
         {
 
+            // 幅を取得
+            int width = this.ClientSize.Width;
+            // 高さを取得
+            int height = this.ClientSize.Height;
+
+            this.viewGadgets.Width = this.ClientSize.Width;
+            this.viewGadgets.Height = this.ClientSize.Height;
+
+            Console.WriteLine($"幅: {width} 高さ: {height}");
+
             // ウィンドウの状態を復元
             if (Properties.Settings.Default.GadgetsSize.Width > 0 && Properties.Settings.Default.GadgetsSize.Height > 0)    // サイズが 0 じゃない
             {
@@ -91,17 +86,23 @@ namespace YoshidayaGadgetsCS
                     this.WindowState = Properties.Settings.Default.GadgetsState;
                 }
                 this.Location = Properties.Settings.Default.GadgetsPos;
+
                 this.Size = Properties.Settings.Default.GadgetsSize;
             }
 
             this.Opacity = Properties.Settings.Default.GadgetsOpacity; // 透明度
+
             this.Text = Properties.Settings.Default.GadgetsTitleName; // タイトルネーム
 
             this.viewGadgets.Source = new System.Uri(Properties.Settings.Default.GadgetsStartPageUrl.ToString(), System.UriKind.Absolute);
 
             viewGadgets.NavigationStarting += WebView2_NavigationStarting;
 
-            //this.CustomChanged();
+
+
+            CustomChanged();
+
+            Console.WriteLine($"幅: {width} 高さ: {height}");
 
             _ = InitializeAsync();
 
@@ -118,7 +119,9 @@ namespace YoshidayaGadgetsCS
 
                     //MessageBox.Show("start\n"+decstr);
 
-                    if (!decstr.Contains(Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
+                    if ( decstr != Properties.Settings.Default.GadgetsStartPageUrl.ToString())
+                    //if (!decstr.Contains(Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
+
 
                     {
 
@@ -143,16 +146,16 @@ namespace YoshidayaGadgetsCS
         private void CoreWebView2_NewWindowRequested(object sender, CoreWebView2NewWindowRequestedEventArgs e)
         {
 
-
                 try
 
                 {
                     string decstr = HttpUtility.UrlDecode(e.Uri);
-                    MessageBox.Show("Request\n" + decstr);
+                    //MessageBox.Show("Request\n" + decstr);
 
                     e.Handled = true; // NewWindowのキャンセル
 
-                    if (!decstr.Contains(Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
+                    if (decstr != Properties.Settings.Default.GadgetsStartPageUrl.ToString())
+                    //if (!decstr.Contains(Properties.Settings.Default.GadgetsStartPageUrl.ToString()))
 
                     {
 
@@ -169,22 +172,20 @@ namespace YoshidayaGadgetsCS
 
                 }
 
-
-
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
+        //private void pictureBox1_Click(object sender, EventArgs e)
+        //{
 
-            if (Program.formCustomInstance == null || Program.formCustomInstance.IsDisposed)
+        //    if (Program.formCustomInstance == null || Program.formCustomInstance.IsDisposed)
 
-            {
+        //    {
 
-                    FormCustom FormCustom = new FormCustom();
-                    FormCustom.Show();
+        //            FormCustom FormCustom = new FormCustom();
+        //            FormCustom.Show();
 
-            }
-        }
+        //    }
+        //}
 
         private void formGadgets_Closed(object sender, FormClosedEventArgs e)
         {
@@ -206,12 +207,6 @@ namespace YoshidayaGadgetsCS
             Properties.Settings.Default.Save();
         }
 
-        private void メニュー1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("test");
-            this.WindowState = FormWindowState.Normal;
-            this.Show();
-        }
 
         private void FormGadgets_Resize(object sender, EventArgs e)
         {
@@ -220,6 +215,34 @@ namespace YoshidayaGadgetsCS
                 this.WindowState = FormWindowState.Normal;
                 this.Hide();
             }
+        }
+
+        private void MenuItem_Custom_Click(object sender, EventArgs e)
+        {
+            FormCustom FormCustom = new FormCustom();
+            FormCustom.Show();
+        }
+
+        private void MenuItem_Freeze_Click(object sender, EventArgs e)
+        {
+
+            if (Properties.Settings.Default.GadgetsFixed)
+            {
+                Properties.Settings.Default.GadgetsFixed = false;
+            }
+            else
+            {
+                Properties.Settings.Default.GadgetsFixed = true;
+            }
+
+            Program.formGadgetsInstance.CustomChanged();
+
+        }
+
+        private void MenuItem_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
         }
     }
 

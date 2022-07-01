@@ -30,32 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formGadgets));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.viewGadgets = new Microsoft.Web.WebView2.WinForms.WebView2();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.メニュー1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.ContextMenuStrip_Gadgets = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MenuItem_Freeze = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Custom = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Close = new System.Windows.Forms.ToolStripMenuItem();
+            this.NotifyIcon_Gadgets = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.viewGadgets)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            this.ContextMenuStrip_Gadgets.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(752, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // viewGadgets
             // 
@@ -66,57 +49,58 @@
             this.viewGadgets.CreationProperties = null;
             this.viewGadgets.DataBindings.Add(new System.Windows.Forms.Binding("Source", global::YoshidayaGadgetsCS.Properties.Settings.Default, "GadgetsStartPageUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.viewGadgets.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.viewGadgets.Location = new System.Drawing.Point(0, 80);
-            this.viewGadgets.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.viewGadgets.Location = new System.Drawing.Point(0, 0);
+            this.viewGadgets.Margin = new System.Windows.Forms.Padding(0);
             this.viewGadgets.Name = "viewGadgets";
-            this.viewGadgets.Size = new System.Drawing.Size(824, 472);
+            this.viewGadgets.Size = new System.Drawing.Size(780, 540);
             this.viewGadgets.Source = global::YoshidayaGadgetsCS.Properties.Settings.Default.GadgetsStartPageUrl;
             this.viewGadgets.TabIndex = 0;
             this.viewGadgets.ZoomFactor = 1D;
             // 
-            // contextMenuStrip1
+            // ContextMenuStrip_Gadgets
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.メニュー1ToolStripMenuItem,
-            this.設定ToolStripMenuItem,
-            this.終了ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 76);
+            this.ContextMenuStrip_Gadgets.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ContextMenuStrip_Gadgets.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_Freeze,
+            this.MenuItem_Custom,
+            this.MenuItem_Close});
+            this.ContextMenuStrip_Gadgets.Name = "contextMenuStrip1";
+            this.ContextMenuStrip_Gadgets.Size = new System.Drawing.Size(196, 76);
             // 
-            // メニュー1ToolStripMenuItem
+            // MenuItem_Freeze
             // 
-            this.メニュー1ToolStripMenuItem.Name = "メニュー1ToolStripMenuItem";
-            this.メニュー1ToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
-            this.メニュー1ToolStripMenuItem.Text = "メニュー1";
-            this.メニュー1ToolStripMenuItem.Click += new System.EventHandler(this.メニュー1ToolStripMenuItem_Click);
+            this.MenuItem_Freeze.Name = "MenuItem_Freeze";
+            this.MenuItem_Freeze.Size = new System.Drawing.Size(195, 24);
+            this.MenuItem_Freeze.Text = "ガジェットを固定する";
+            this.MenuItem_Freeze.Click += new System.EventHandler(this.MenuItem_Freeze_Click);
             // 
-            // 設定ToolStripMenuItem
+            // MenuItem_Custom
             // 
-            this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
-            this.設定ToolStripMenuItem.Text = "設定";
+            this.MenuItem_Custom.Name = "MenuItem_Custom";
+            this.MenuItem_Custom.Size = new System.Drawing.Size(195, 24);
+            this.MenuItem_Custom.Text = "設定";
+            this.MenuItem_Custom.Click += new System.EventHandler(this.MenuItem_Custom_Click);
             // 
-            // 終了ToolStripMenuItem
+            // MenuItem_Close
             // 
-            this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
-            this.終了ToolStripMenuItem.Text = "終了";
+            this.MenuItem_Close.Name = "MenuItem_Close";
+            this.MenuItem_Close.Size = new System.Drawing.Size(195, 24);
+            this.MenuItem_Close.Text = "終了";
+            this.MenuItem_Close.Click += new System.EventHandler(this.MenuItem_Close_Click);
             // 
-            // notifyIcon1
+            // NotifyIcon_Gadgets
             // 
-            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
+            this.NotifyIcon_Gadgets.ContextMenuStrip = this.ContextMenuStrip_Gadgets;
+            this.NotifyIcon_Gadgets.Icon = ((System.Drawing.Icon)(resources.GetObject("NotifyIcon_Gadgets.Icon")));
+            this.NotifyIcon_Gadgets.Text = "ガジェット";
+            this.NotifyIcon_Gadgets.Visible = true;
             // 
             // formGadgets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(827, 553);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(782, 553);
             this.Controls.Add(this.viewGadgets);
             this.DataBindings.Add(new System.Windows.Forms.Binding("Opacity", global::YoshidayaGadgetsCS.Properties.Settings.Default, "GadgetsOpacity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::YoshidayaGadgetsCS.Properties.Settings.Default, "GadgetsTitleName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -130,23 +114,20 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formGadgets_Closed);
             this.Load += new System.EventHandler(this.formGadgets_Load);
             this.Resize += new System.EventHandler(this.FormGadgets_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewGadgets)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.ContextMenuStrip_Gadgets.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private Microsoft.Web.WebView2.WinForms.WebView2 viewGadgets;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem メニュー1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 設定ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuStrip_Gadgets;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_Freeze;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_Custom;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_Close;
+        private System.Windows.Forms.NotifyIcon NotifyIcon_Gadgets;
     }
 }
 
